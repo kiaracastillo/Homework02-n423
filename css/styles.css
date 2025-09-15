@@ -1,12 +1,230 @@
+/* base */
 * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
+  
+  box-sizing: border-box; 
+
 }
+:root {
+  --bg: #0b1220; /* azul muy oscuro  */
+  --ink: #e6f0ff;    /* texto principal  */
+  --muted: #8ca2c0;  /* texto secundario  */
+  --violet: #d855b1;  /* acento azul brillante */
+  --lav: #1e293b;  /* borde suave */
+  --card: #111827;   /* tarjetas */
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(15, 23, 42, .3);  /* sombra azulada suave */
+}
+
 html, body {
- height: 100%
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 16px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
 }
-h1, h2, h3, h4, h5, h6, p {
- margin-bottom: 16px
+
+/* nav */
+.nav {
+  position: sticky;
+ top: 0;
+z-index: 100;
+display: flex;
+  justify-content: flex-end;         
+
+  gap: 2rem;
+ 
+ align-items: center;
+   padding: 1rem 2.5rem;
+
+  background: #0b1220; 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(233, 213, 255, 0.4);
+  box-shadow: 0 2px 20px rgba(124, 58, 237, 0.05);
+}
+
+.nav a {
+  color:#d855b1;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.3rem 0;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background:#d855b1;
+  transition: width .3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav .auth {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav .auth button {
+  border: 1px solid #d855b1;
+  background: #0b1220;
+  color:#d855b1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  font-weight: 500;
+  backdrop-filter: blur(6px);
+}
+
+.nav .auth .btn--primary {
+  background: #d855b1;
+  color: #fff;
+  border: none;
+}
+
+.nav .auth .btn--primary:hover {
+  background:#d855b1;
+}
+/*  layout  */
+.container { 
+
+  width: min(980px, 92%); 
+  
+  margin: 32px auto; 
+}
+
+h1 {
+  margin: 0 0 22px; 
+text-align: center; 
+
+font-weight: 700;
+  letter-spacing: .2px; 
+  color: var(--violet);
+}
+
+/* form */
+
+.search {
+display: flex;
+justify-content: center;
+ align-items: center;
+ gap: 0.75rem;
+margin: 2rem auto 3rem;
+  flex-wrap: wrap; 
+}
+
+.search label {
+  
+  display: none; 
+}
+
+.search input[type="text"],
+.search input[type="number"] {
+  flex: 1 1 200px;
+  max-width: 260px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.75rem;
+  background: #ffff;
+  color: var(--violet);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+
+
+.search .btn {
+  padding: 0.75rem 1.5rem;
+ border: none;
+  border-radius: 0.75rem;
+  background: var(--violet);      
+
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+    
+
+/* cards */
+.card {
+  background: var(--card);
+ border: 1px solid var(--lav);
+ border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  
+ 
+}
+
+/* Card destacada para clima actual */
+.card--current {
+
+  display: grid; 
+  gap: 10px; 
+margin: 0 auto 18px; 
+max-width: 780px;
+
+
+}
+
+.card--current h2 { 
+  margin: 0 0 6px; 
+}
+
+
+.meta { 
+
+  color: var(--muted); font-size: 13px; 
+}
+
+.temps { 
+  color: var(--violet); 
+font-weight: 700; 
+  font-size: 18px; 
+}
+
+/* tarjetas por día */
+
+.grid--forecast {
+
+  display: grid; 
+gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 15px;
+
+}
+.grid--forecast .card { 
+  text-align: 
+  center; padding: 16px; 
+}
+
+.grid--forecast img { 
+  width: 56px; 
+  height: 56px; 
+margin: 4px auto 8px; 
+display: block; 
+
+}
+
+.grid--forecast .date { 
+
+  font-weight: 600; 
+  margin-bottom: 6px; 
+
+}
+
+.grid--forecast .mini { 
+  color: var(--muted);
+  font-size: 13px; 
+
 }
 

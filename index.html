@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title</title>
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
- <script src="lib/jquery-3.7.1.min.js">
-</script><script src="app/app.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__link" href="#">Home</a>
+      <a class="nav__link" href="#">Forecast</a>
+      <a class="nav__link" href="#">Maps</a>
+      <a class="nav__link" href="#">About</a>
+      <div class="auth" role="group" aria-label="Auth">
+        <button id="loginBtn" type="button">Login</button>
+        <button id="signupBtn" class="btn--primary" type="button">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" id="main" tabindex="-1">
+  <h1>Weather in Ciudad Juárez, Chihuahua</h1>
+
+  <form id="searchForm" class="search" autocomplete="off" aria-label="Search weather">
+    <label for="cityInput">City or ZIP</label>
+    <input id="cityInput" name="q" type="text" value="Ciudad Juárez, Chihuahua" required />
+
+    <label for="daysInput">Days</label>
+    <input id="daysInput" name="days" type="number" min="1" max="10" value="1" />
+
+    <button class="btn" type="submit">Get Forecast</button>
+  </form>
+
+  <section id="currentWeather" class="card" aria-live="polite" aria-atomic="true"></section>
+  <section id="forecastWeather" class="grid--forecast" aria-live="polite"></section>
+</main>
+
+  
+
+  <script type="module" src="model/model.js"></script>
+<script type="module" src="app/app.js"></script>
 </body>
 </html>
